@@ -3,7 +3,7 @@ import { useMachine } from '@xstate/react';
 
 import appMachine from './machine';
 
-import Calculator from 'app/views/calculator';
+import CalcView from 'app/views/calculator';
 
 import { OutsideWrapper, MiddleWrapper, InnerContent } from './styles';
 
@@ -17,7 +17,7 @@ const App = () => {
             <OutsideWrapper>
                 <MiddleWrapper>
                     <InnerContent>
-                        <Calculator />
+                        <CalcView />
                     </InnerContent>
                 </MiddleWrapper>
             </OutsideWrapper>

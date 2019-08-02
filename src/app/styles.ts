@@ -18,7 +18,6 @@ export const InnerContent = styled.div`
     margin-left: auto;
     margin-right: auto;
     width: 400px;
-    border: 1px solid black;
     display: flex;
     justify-content: center;
 `;

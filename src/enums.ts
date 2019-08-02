@@ -13,7 +13,13 @@ export enum CalcValues {
     Multiply = '*',
     Subtract = '-',
     Add = '+',
-    Period = '.',
+    Decimal = '.',
     ParensOpen = '(',
     ParensClose = ')'
+}
+
+export enum Key {
+    ENTER = 'Enter',
+    BACKSPACE = 'Backspace',
+    ESCAPE = 'Escape'
 }
