@@ -15,7 +15,8 @@ export enum CalcValues {
     Add = '+',
     Decimal = '.',
     ParensOpen = '(',
-    ParensClose = ')'
+    ParensClose = ')',
+    Enter = 'Enter'
 }
 
 export enum Key {

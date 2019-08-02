@@ -6,10 +6,13 @@ interface ItemProps {
 
 export const StyledCalculatorButton = styled.div<ItemProps>`
     display: flex;
+    cursor: pointer;
     align-items: center;
+    font-size: 18px;
+    font-family: IBMPlexSans-Regular, sans-serif;
     justify-content: center;
-    height: 40px;
-    width: 40px;
+    height: 50px;
+    width: 50px;
     outline: 1px solid;
     margin-top: 1px;
     user-select: none;

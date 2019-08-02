@@ -3,7 +3,7 @@ import { CalcValues, Key } from 'enums';
 import { ButtonOrder } from 'app-constants';
 import CalculatorButton from 'app/widgets/calculator-button';
 
-import { ButtonContainer, CalcContainer, ButtonRow } from './styles';
+import { ButtonContainer, ButtonRow, CalcContainer } from './styles';
 
 export type Props = {};
 export type State = {
@@ -27,8 +27,6 @@ class Calculator extends React.Component<Props, State> {
 
     _onKeyUp = ({ key }: KeyboardEvent) => {
         switch (key) {
-            case Key.ENTER:
-                return this.calculateInput();
             case Key.BACKSPACE:
                 return this.handleDelete();
             case Key.ESCAPE:
@@ -55,7 +53,13 @@ class Calculator extends React.Component<Props, State> {
 
     setResult = (result: string) => this.setState({ result });
 
-    handleClick = (value: CalcValues) => this.setInputValue(this.state.inputValue.concat(value));
+    handleClick = (value: CalcValues) => {
+        if (value === CalcValues.Enter) {
+            this.calculateInput();
+        } else {
+            this.setInputValue(this.state.inputValue.concat(value));
+        }
+    };
 
     handleDelete = () => {
         const { inputValue } = this.state;

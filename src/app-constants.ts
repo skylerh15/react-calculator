@@ -5,5 +5,5 @@ export const ButtonOrder = [
     [CalcValues.Seven, CalcValues.Eight, CalcValues.Nine],
     [CalcValues.Four, CalcValues.Five, CalcValues.Six],
     [CalcValues.One, CalcValues.Two, CalcValues.Three],
-    [CalcValues.Zero, CalcValues.Decimal]
+    [CalcValues.Zero, CalcValues.Decimal, CalcValues.Enter]
 ];
