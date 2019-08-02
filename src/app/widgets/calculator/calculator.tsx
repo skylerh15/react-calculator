@@ -7,13 +7,13 @@ import { ButtonContainer, CalcContainer, ButtonRow } from './styles';
 export type Props = {};
 export type State = {
     inputValue: string;
-    result: number;
+    result: string;
 };
 
 class Calculator extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props);
-        this.state = { inputValue: '', result: 0 };
+        this.state = { inputValue: '', result: '' };
     }
 
     componentDidMount() {
@@ -39,7 +39,7 @@ class Calculator extends React.Component<Props, State> {
 
     setInputValue = (inputValue: string) => this.setState({ inputValue });
 
-    setResult = (result: number) => this.setState({ result });
+    setResult = (result: string) => this.setState({ result });
 
     handleClick = (value: CalcValues) => this.setInputValue(this.state.inputValue.concat(value));
 
@@ -48,7 +48,12 @@ class Calculator extends React.Component<Props, State> {
         this.setInputValue(inputValue.substring(0, inputValue.length - 1));
     };
 
-    handleClear = () => this.setInputValue('');
+    handleClear = (showResult?: boolean) => {
+        this.setInputValue('');
+        if (!showResult) {
+            this.setResult('');
+        }
+    };
 
     renderButton = (value: CalcValues) => {
         return <CalculatorButton buttonValue={value} onClick={this.handleClick} />;
@@ -57,14 +62,14 @@ class Calculator extends React.Component<Props, State> {
     calculateInput = () => {
         try {
             // eslint-disable-next-line
-            const evalResult = eval(this.state.inputValue.toString());
-            if (evalResult) {
+            const evalResult = eval(this.state.inputValue);
+            if (evalResult !== undefined) {
                 this.setResult(evalResult);
-                this.handleClear();
             }
         } catch (e) {
-            // do nothing
+            this.setResult('error');
         }
+        this.handleClear(true);
     };
 
     render() {

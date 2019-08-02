@@ -47,7 +47,11 @@ class CalculatorButton extends React.Component<Props, State> {
         onClick(buttonValue);
     };
 
-    setActive = (active: boolean) => this.setState({ active });
+    setActive = (active: boolean) => {
+        if (this.state.active !== active) {
+            this.setState({ active });
+        }
+    };
 
     render() {
         const { buttonValue } = this.props;
