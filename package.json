@@ -2,8 +2,10 @@
     "name": "react-calculator",
     "version": "0.1.0",
     "private": true,
+    "homepage": "https://skylerh15.github.io/react-calculator",
     "dependencies": {
         "@xstate/react": "^0.7.0",
+        "gh-pages": "2.0.1",
         "lodash": "^4.17.15",
         "react": "^16.8.6",
         "react-dom": "^16.8.6",
@@ -36,6 +38,8 @@
         "eject": "react-scripts eject",
         "prettify": "prettier --write \"src/**/*.{ts,tsx}\"",
         "start": "yarn && react-scripts start",
+        "predeploy": "yarn run build",
+        "deploy": "gh-pages -d build",
         "test": "react-scripts test",
         "tslint-check": "tslint-config-prettier-check ./tslint.json"
     },

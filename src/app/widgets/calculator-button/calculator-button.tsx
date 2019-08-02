@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { CalcValues, Key } from 'enums';
+import { CalcValues } from 'enums';
 
 import { StyledCalculatorButton } from './styles';
 

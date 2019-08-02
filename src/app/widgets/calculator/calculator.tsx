@@ -56,6 +56,7 @@ class Calculator extends React.Component<Props, State> {
 
     calculateInput = () => {
         try {
+            // eslint-disable-next-line
             const evalResult = eval(this.state.inputValue.toString());
             if (evalResult) {
                 this.setResult(evalResult);
