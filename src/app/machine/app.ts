@@ -2,7 +2,8 @@ export default {
     id: 'app',
     initial: 'main',
     context: {
-        userVariables: []
+        userVariables: [],
+        pastResults: []
     },
     states: {
         main: {}
