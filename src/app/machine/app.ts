@@ -6,6 +6,15 @@ export default {
         pastResults: []
     },
     states: {
-        main: {}
+        main: {
+            on: {
+                NEXT: 'second'
+            }
+        },
+        second: {
+            on: {
+                NEXT: 'main'
+            }
+        }
     }
 };
