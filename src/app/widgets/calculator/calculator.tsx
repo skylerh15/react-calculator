@@ -5,91 +5,74 @@ import CalculatorButton from 'app/widgets/calculator-button';
 
 import { ButtonContainer, ButtonRow, CalcContainer } from './styles';
 
-export type Props = {};
-export type State = {
-    inputValue: string;
-    result: string;
-};
+const Calculator: React.FC = () => {
+    const [inputValue, setInputValue] = React.useState<string>('');
+    const [result, setResult] = React.useState<string>('');
 
-class Calculator extends React.Component<Props, State> {
-    constructor(props: Props) {
-        super(props);
-        this.state = { inputValue: '', result: '' };
-    }
+    React.useEffect(() => {
+        window.addEventListener('keyup', _onKeyUp);
 
-    componentDidMount() {
-        window.addEventListener('keyup', this._onKeyUp);
-    }
+        return () => {
+            window.removeEventListener('keyup', _onKeyUp);
+        };
+    });
 
-    componentWillUnmount() {
-        window.removeEventListener('keyup', this._onKeyUp);
-    }
-
-    _onKeyUp = ({ key }: KeyboardEvent) => {
-        switch (key) {
-            case Key.BACKSPACE:
-                return this.handleDelete();
-            case Key.ESCAPE:
-                return this.handleClear();
-            default:
-                return;
+    const _onKeyUp = ({ key }: KeyboardEvent) => {
+        if (key === Key.ESCAPE) {
+            handleClear();
         }
     };
 
-    calculateInput = () => {
+    const calculateInput = () => {
         try {
             // eslint-disable-next-line
-            const evalResult = eval(this.state.inputValue);
+            const evalResult = eval(inputValue);
             if (evalResult !== undefined) {
-                this.setResult(evalResult);
+                setResult(evalResult);
             }
         } catch (e) {
-            this.setResult('error');
+            setResult('error');
         }
-        this.handleClear(true);
+        handleClear(true);
     };
 
-    setInputValue = (inputValue: string) => this.setState({ inputValue });
-
-    setResult = (result: string) => this.setState({ result });
-
-    handleClick = (value: CalcValues) => {
+    const handleClick = (value: CalcValues) => {
         if (value === CalcValues.Enter) {
-            this.calculateInput();
+            calculateInput();
+        } else if (value === CalcValues.Clear) {
+            handleClear();
+        } else if (value === CalcValues.Backspace) {
+            handleDelete();
         } else {
-            this.setInputValue(this.state.inputValue.concat(value));
+            setInputValue(inputValue.concat(value));
         }
     };
 
-    handleDelete = () => {
-        const { inputValue } = this.state;
-        this.setInputValue(inputValue.substring(0, inputValue.length - 1));
+    const handleDelete = () => {
+        setInputValue(inputValue.substring(0, inputValue.length - 1));
     };
 
-    handleClear = (showResult?: boolean) => {
-        this.setInputValue('');
+    const handleClear = (showResult?: boolean) => {
+        setInputValue('');
         if (!showResult) {
-            this.setResult('');
+            setResult('');
         }
     };
 
-    renderButton = (value: CalcValues) => (
-        <CalculatorButton key={value} buttonValue={value} onClick={this.handleClick} />
+    const renderButton = (value: CalcValues) => (
+        <CalculatorButton key={value} buttonValue={value} onClick={handleClick} />
     );
 
-    renderRow = (row: CalcValues[], index: number) => <ButtonRow key={index}>{row.map(this.renderButton)}</ButtonRow>;
+    const renderRow = (row: CalcValues[], index: number) => <ButtonRow key={index}>{row.map(renderButton)}</ButtonRow>;
 
-    render() {
-        const { inputValue, result } = this.state;
-        return (
-            <CalcContainer>
-                <input readOnly={true} value={inputValue} />
-                <br />
-                <input readOnly={true} value={result} />
-                <ButtonContainer>{ButtonOrder.map(this.renderRow)}</ButtonContainer>
-            </CalcContainer>
-        );
-    }
-}
+    return (
+        <CalcContainer>
+            <input readOnly={true} value={inputValue} />
+            <br />
+            <input readOnly={true} value={result} />
+            <ButtonContainer>{ButtonOrder.map(renderRow)}</ButtonContainer>
+        </CalcContainer>
+    );
+};
 
 export default Calculator;

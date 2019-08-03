@@ -16,7 +16,9 @@ export enum CalcValues {
     Decimal = '.',
     ParensOpen = '(',
     ParensClose = ')',
-    Enter = 'Enter'
+    Enter = 'Enter',
+    Clear = 'C',
+    Backspace = 'Backspace'
 }
 
 export enum Key {

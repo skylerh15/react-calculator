@@ -1,8 +1,9 @@
 import { CalcValues } from './enums';
 
 export const ButtonOrder = [
-    [CalcValues.Seven, CalcValues.Eight, CalcValues.Nine, CalcValues.Divide],
-    [CalcValues.Four, CalcValues.Five, CalcValues.Six, CalcValues.Multiply],
-    [CalcValues.One, CalcValues.Two, CalcValues.Three, CalcValues.Subtract],
-    [CalcValues.Zero, CalcValues.Decimal, CalcValues.Enter, CalcValues.Add]
+    [CalcValues.Backspace, CalcValues.Clear, CalcValues.Divide],
+    [CalcValues.Seven, CalcValues.Eight, CalcValues.Nine, CalcValues.Multiply],
+    [CalcValues.Four, CalcValues.Five, CalcValues.Six, CalcValues.Subtract],
+    [CalcValues.One, CalcValues.Two, CalcValues.Three, CalcValues.Add],
+    [CalcValues.Zero, CalcValues.Decimal, CalcValues.Enter]
 ];

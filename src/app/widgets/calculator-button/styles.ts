@@ -12,7 +12,7 @@ export const StyledCalculatorButton = styled.div<ItemProps>`
     font-family: IBMPlexSans-Regular, sans-serif;
     justify-content: center;
     height: 50px;
-    width: 50px;
+    min-width: 50px;
     outline: 1px solid;
     margin-top: 1px;
     user-select: none;
