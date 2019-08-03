@@ -6,8 +6,8 @@ import CalculatorButton from 'app/widgets/calculator-button';
 import { ButtonContainer, ButtonRow, CalcContainer } from './styles';
 
 const Calculator: React.FC = () => {
-    const [inputValue, setInputValue] = React.useState<string>('');
-    const [result, setResult] = React.useState<string>('');
+    const [inputValue, setInputValue] = React.useState('');
+    const [result, setResult] = React.useState('');
 
     React.useEffect(() => {
         window.addEventListener('keyup', _onKeyUp);
