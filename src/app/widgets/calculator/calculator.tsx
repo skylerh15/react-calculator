@@ -11,10 +11,7 @@ const Calculator: React.FC = () => {
 
     React.useEffect(() => {
         window.addEventListener('keyup', _onKeyUp);
-
-        return () => {
-            window.removeEventListener('keyup', _onKeyUp);
-        };
+        return () => window.removeEventListener('keyup', _onKeyUp);
     });
 
     const _onKeyUp = ({ key }: KeyboardEvent) => {
